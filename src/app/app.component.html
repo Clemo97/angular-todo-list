@@ -1,6 +1,23 @@
 <div class="main">
   <h1>My To Do List</h1>
-  <h2>What would you like to do today?</h2>
+
+  <label for="addItemINput">What would you like to do today?</label>
+ <!-- When user types in a new item in the <input> and presses 'Enter'
+  the 'addItem()' method add the value to the 'items' array. Pressing 'Enter'
+  also resets the input field.
+  ALternatively the user can click 'Add' button to call the same addItem() method
+-->
+  <input
+    #newItem
+    placeholder="add an item"
+    (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+    class="lg-text-input"
+    id="addItemInput"
+  />
+
+  <button class="btn-primary"
+    (click)="addItem(newItem.value)">Add</button>
+
   <ul>
     <!-- The *ngFor built in directive iterates over the 'items' in the array
       And each time *ngFor  creates a new list. The {{}} contain 'item.description' tells angular to
