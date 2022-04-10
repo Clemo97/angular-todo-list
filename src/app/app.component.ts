@@ -1,3 +1,4 @@
+import { isNgContent } from '@angular/compiler';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-todo-list';
+  title = 'todo';
+/*filter property is a type of union, which have the value of 'all', 'active'
+of 'done'.
+*/
+  filter: 'all' | 'active' | 'done' = 'all';
+
+/*allItems array contains the to-do items objects and whether they are done
+
+*/
+  allItems = [
+    { description: 'eat', done: true },
+    { description: 'sleep', done: false },
+    { description: 'play', done: false },
+    { description: 'laugh', done: false },
+  ];
+
+/*retrieves the 'items' from the 'allItems' array if the 'filter'
+is equal to 'all', otherwise it returns the 'done' items.*/
+  get items() {
+    if (this.filter == 'all') {
+      return this.allItems;
+    }
+    return this.allItems.filter(item => this.filter === 'done' ?
+    item.done : !item.done);
+  }
+
 }
