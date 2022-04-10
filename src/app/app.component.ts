@@ -32,5 +32,15 @@ is equal to 'all', otherwise it returns the 'done' items.*/
     return this.allItems.filter(item => this.filter === 'done' ?
     item.done : !item.done);
   }
+  /*'addItem' method allows our app to add items, it takes an items
+  from the user clicks 'Add' button. It uses array method unshift() to
+  add new item to the beginning of the array and top of the list. 
+  */
+  addItem(description:string) {
+    this.allItems.unshift({
+      description,
+      done: false
+    });
+  }
 
 }
